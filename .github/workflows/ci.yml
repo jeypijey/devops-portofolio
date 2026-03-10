@@ -25,8 +25,9 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-      - name: Buils Docker Image
-        run: docker build -t jeypijey03/devops-portofolio:latest .
-
-      - name: Push Docker Image
-        run: docker push jeypijey03/devops-portofolio:latest
+      - name: Build and Push Docker Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: jeypijey03/devops-portofolio:latest
